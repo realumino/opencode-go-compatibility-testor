@@ -1,0 +1,61 @@
+model_id,model_name,endpoint,primary,http_status,result
+grok-4.5,Grok 4.5,chat/completions,no,503,FAIL
+grok-4.5,Grok 4.5,responses,yes,200,OK
+grok-4.5,Grok 4.5,messages,no,401,FAIL
+gpt-5.6-luna,GPT 5.6 Luna,chat/completions,no,403,FAIL
+gpt-5.6-luna,GPT 5.6 Luna,responses,yes,403,FAIL
+gpt-5.6-luna,GPT 5.6 Luna,messages,no,403,FAIL
+glm-5.3,GLM-5.3,chat/completions,yes,200,OK
+glm-5.3,GLM-5.3,responses,no,200,OK
+glm-5.3,GLM-5.3,messages,no,200,OK
+glm-5.2,GLM-5.2,chat/completions,yes,200,OK
+glm-5.2,GLM-5.2,responses,no,200,OK
+glm-5.2,GLM-5.2,messages,no,200,OK
+glm-5.1,GLM-5.1,chat/completions,yes,200,OK
+glm-5.1,GLM-5.1,responses,no,200,OK
+glm-5.1,GLM-5.1,messages,no,200,OK
+kimi-k3,Kimi K3,chat/completions,yes,200,OK
+kimi-k3,Kimi K3,responses,no,401,FAIL
+kimi-k3,Kimi K3,messages,no,200,OK
+kimi-k2.7-code,Kimi K2.7 Code,chat/completions,yes,200,OK
+kimi-k2.7-code,Kimi K2.7 Code,responses,no,200,OK
+kimi-k2.7-code,Kimi K2.7 Code,messages,no,200,OK
+kimi-k2.6,Kimi K2.6,chat/completions,yes,200,OK
+kimi-k2.6,Kimi K2.6,responses,no,200,OK
+kimi-k2.6,Kimi K2.6,messages,no,200,OK
+deepseek-v4-pro,DeepSeek V4 Pro,chat/completions,yes,403,FAIL
+deepseek-v4-pro,DeepSeek V4 Pro,responses,no,403,FAIL
+deepseek-v4-pro,DeepSeek V4 Pro,messages,no,403,FAIL
+deepseek-v4-flash,DeepSeek V4 Flash,chat/completions,yes,403,FAIL
+deepseek-v4-flash,DeepSeek V4 Flash,responses,no,403,FAIL
+deepseek-v4-flash,DeepSeek V4 Flash,messages,no,403,FAIL
+mimo-v2.5,MiMo-V2.5,chat/completions,yes,200,OK
+mimo-v2.5,MiMo-V2.5,responses,no,200,OK
+mimo-v2.5,MiMo-V2.5,messages,no,200,OK
+mimo-v2.5-pro,MiMo-V2.5-Pro,chat/completions,yes,200,OK
+mimo-v2.5-pro,MiMo-V2.5-Pro,responses,no,200,OK
+mimo-v2.5-pro,MiMo-V2.5-Pro,messages,no,200,OK
+minimax-m3,MiniMax M3,chat/completions,no,200,OK
+minimax-m3,MiniMax M3,responses,no,401,FAIL
+minimax-m3,MiniMax M3,messages,yes,200,OK
+minimax-m2.7,MiniMax M2.7,chat/completions,no,200,OK
+minimax-m2.7,MiniMax M2.7,responses,no,200,OK
+minimax-m2.7,MiniMax M2.7,messages,yes,200,OK
+minimax-m2.5,MiniMax M2.5,chat/completions,no,200,OK
+minimax-m2.5,MiniMax M2.5,responses,no,401,FAIL
+minimax-m2.5,MiniMax M2.5,messages,yes,200,OK
+qwen3.8-max,Qwen3.8 Max,chat/completions,no,200,OK
+qwen3.8-max,Qwen3.8 Max,responses,no,401,FAIL
+qwen3.8-max,Qwen3.8 Max,messages,yes,200,OK
+qwen3.7-max,Qwen3.7 Max,chat/completions,no,200,OK
+qwen3.7-max,Qwen3.7 Max,responses,no,401,FAIL
+qwen3.7-max,Qwen3.7 Max,messages,yes,200,OK
+qwen3.7-plus,Qwen3.7 Plus,chat/completions,no,200,OK
+qwen3.7-plus,Qwen3.7 Plus,responses,no,401,FAIL
+qwen3.7-plus,Qwen3.7 Plus,messages,yes,200,OK
+qwen3.6-plus,Qwen3.6 Plus,chat/completions,no,200,OK
+qwen3.6-plus,Qwen3.6 Plus,responses,no,401,FAIL
+qwen3.6-plus,Qwen3.6 Plus,messages,yes,200,OK
+hy3,Hy3,chat/completions,yes,200,OK
+hy3,Hy3,responses,no,200,OK
+hy3,Hy3,messages,no,200,OK
