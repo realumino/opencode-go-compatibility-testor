@@ -100,7 +100,7 @@ request() {
             curl "${args[@]}" \
                 -H 'Content-Type: application/json' \
                 -H "Authorization: Bearer $KEY" \
-                --data "{\"model\":\"$model\",\"messages\":[{\"role\":\"user\",\"content\":\"ping\"}],\"max_tokens\":8}" \
+                --data "{\"model\":\"$model\",\"messages\":[{\"role\":\"user\",\"content\":\"ping\"}],\"max_tokens\":128}" \
                 "$url" 2>/dev/null
             ;;
         responses)
@@ -108,7 +108,7 @@ request() {
             curl "${args[@]}" \
                 -H 'Content-Type: application/json' \
                 -H "Authorization: Bearer $KEY" \
-                --data "{\"model\":\"$model\",\"input\":[{\"role\":\"user\",\"content\":\"ping\"}],\"max_output_tokens\":8}" \
+                --data "{\"model\":\"$model\",\"input\":[{\"role\":\"user\",\"content\":\"ping\"}],\"max_output_tokens\":128}" \
                 "$url" 2>/dev/null
             ;;
         messages)
@@ -124,16 +124,22 @@ request() {
 }
 
 # passes <http_status> <body_file> <kind> -> 0 if the response looks like a real model reply
+# "Real reply" means the model actually produced text: 2xx, no "error" field, and at
+# least one non-empty content/text string. 2xx stubs with empty output — "content":[],
+# "choices":[], "content":"", or a bare {"id":...} — fail this check. (The old check
+# only required the marker key to be present, so e.g. an empty anthropic-shaped 200
+# with "content":[] was reported OK even though the model never answered.)
 passes() {
     local status="$1" body="$2" kind="$3"
     [[ "$status" =~ ^2[0-9][0-9]$ ]] || return 1
     # a real error has "error": {...} or "error": "..." — "error":null is normal
     grep -qE '"error"[[:space:]]*:[[:space:]]*[^n]' "$body" 2>/dev/null && return 1
-    case "$kind" in
-        chat)      grep -q '"choices"' "$body" 2>/dev/null ;;
-        responses) grep -q '"output"' "$body" 2>/dev/null || grep -q '"id"' "$body" 2>/dev/null ;;
-        messages)  grep -q '"content"' "$body" 2>/dev/null ;;
-    esac
+    # One non-empty string for a content-ish key, in whatever shape the translator
+    # returns:  "content":"ping" (chat string form), "text":"ping" (anthropic /
+    # responses block form), "content":[{"type":"text","text":"ping"}]. Fails on
+    # "" / null / [] / no content-ish key at all. The kind arg is unused by the
+    # check itself — the shape-agnostic pattern covers all three endpoints.
+    grep -qE '"(content|text)"[[:space:]]*:[[:space:]]*"[^"]' "$body" 2>/dev/null
 }
 
 # snippet <body_file> -> one-line, truncated body, for failure detail
